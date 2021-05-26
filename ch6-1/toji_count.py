@@ -6,7 +6,7 @@ from konlpy.tag import Okt
 fp = codecs.open("2BEXXX05.txt", "r", encoding="utf-16")
 soup = BeautifulSoup(fp, "html.parser")
 body = soup.select_one("body text")
-text = body.GetText()
+text = body.getText()
 
 # 텍스트를 한 줄씩 처리하기 --(2)
 okt = Okt()
