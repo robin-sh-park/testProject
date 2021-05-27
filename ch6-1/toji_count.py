@@ -2,10 +2,10 @@ import codecs
 from bs4 import BeautifulSoup
 from konlpy.tag import Okt
 
-# utf-16 인코딩으로 파일을 열고 글자를 --(1)
+# utf-16 인코딩으로 파일을 열고 글자를 출력하기--(1)
 fp = codecs.open("2BEXXX05.txt", "r", encoding="utf-16")
 soup = BeautifulSoup(fp, "html.parser")
-body = soup.select_one("body text")
+body = soup.select_one("body > text")
 text = body.getText()
 
 # 텍스트를 한 줄씩 처리하기 --(2)
@@ -23,5 +23,5 @@ for line in lines:
 # 많이 사용된 명사 출력하기 --(4)
 keys = sorted(word_dic.items(), key=lambda x: x[1], reverse=True)
 for word, count in keys[:50]:
-    print("{0}({1})".format(word, count), end="")
+    print("{0}({1}) ".format(word, count), end="")
 print()

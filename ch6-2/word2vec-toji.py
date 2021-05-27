@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from konlpy.tag import Okt
 from gensim.models import word2vec
 
-fp = codecs.open("../ch6-1/2BEXXX05.txt", "r", encoding="utf-16")
+fp = codecs.open("2BEXXX05.txt", "r", encoding="utf-16")
 soup = BeautifulSoup(fp, "html.parser")
 body = soup.select_one("body > text")
 text = body.getText()
