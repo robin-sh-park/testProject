@@ -6,6 +6,7 @@ recreating exercises in "파이썬을 이용한 머신러닝, 딥러닝 실전 �
 primarily:
  - scraping/crawling
  - text classification (+ sentiment analysis)
+
 also recreating online code for Sentiment Analysis.
 
 PRACTICE USE ONLY.
