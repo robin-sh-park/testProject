@@ -5,7 +5,7 @@ class RedditbotSpider(scrapy.Spider):
     allowed_domains = ['www.reddit.com/r/gameofthrones/']
     start_urls = ['http://www.reddit.com/r/gameofthrones//']
 
-    def partse(self, response):
+    def parse(self, response):
         # extracting the content using css selectors
         titles = response.css('.title.may-blank::text').extract()
         votes = response.css('.score.unvoted::text').extract()
