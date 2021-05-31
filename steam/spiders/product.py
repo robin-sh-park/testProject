@@ -1,6 +1,9 @@
+# https://docs.scrapy.org/en/latest/topics/spiders.html
 import scrapy
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor
 
-class ProductSpider(scrapy.Spider):
+class ProductSpider(CrawlSpider):
     name = 'products'
     start_urls = [
         'https://store.steampowered.com/search/?sort_by=Released_DESC'

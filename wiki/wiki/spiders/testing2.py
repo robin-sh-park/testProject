@@ -1,27 +1,23 @@
 import scrapy
 
 class testingSpider(scrapy.Spider):
-    name = 'test'
+    name = 'test2'
     start_urls = [
         'https://gall.dcinside.com/mgallery/board/lists/?id=entj'
     ]
 
     def parse(self, response):
-        # extracting the content using css selectors
-        titles = response.css('.title.may-blank::text').extract()
-        votes = response.css('.score.unvoted::text').extract()
-        times = response.css('time::attr(title)').extract()
-        comments = response.css('.comments::text').extract()
+        tr = response.xpath('//tr[@class="ub-content us-post"]')  # 5?
 
         # give the extracted content row wise
-        for item in zip(titles, votes, times, comments):
-            # create a dictionary to store the scraped info
-            scraped_info = {
-                'title': item[0],
-                'vote': item[1],
-                'created_at': item[2],
-                'comments': item[3],
-            }
+        for item in tr:
+            title = item.xpath('./td[@class="gall_tit ub-word"]/a/text()').extract_first()
+            url = item.xpath('./td[@class="gall_tit ub-word"]/a/@href').extract_first()
+            # text = item.xpath('./a/text()').extract()
 
             # yield or give the scraped info to scrapy
-            yield scraped_info
+            yield {
+                title,
+                url,
+                # text
+            }
